@@ -2,6 +2,7 @@ package com.asamitanii.android.mypicturedictionary;
 
 import android.content.Context;
 
+import java.util.List;
 import java.util.ArrayList;
 
 /**
@@ -23,7 +24,9 @@ public class WordLab {
 
     }
 
-//    public List<Word> getWords() {
-//
-//    }
+    public List<Word> getWords() {
+        List<Word> words = new ArrayList<>();
+
+        return words;
+    }
 }
