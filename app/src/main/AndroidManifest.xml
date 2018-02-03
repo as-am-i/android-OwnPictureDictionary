@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".WordListActivity">
+            android:name=".WordListActivity"
+            android:label="List name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -18,7 +19,8 @@
         </activity>
 
         <activity
-            android:name=".WordActivity">
+            android:name=".WordActivity"
+            android:label="Word name in List name">
         </activity>
     </application>
 
