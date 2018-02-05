@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class WordListFragment extends Fragment {
     /*
         WordHolder
      */
-    private class WordHolder extends RecyclerView.ViewHolder {
+    private class WordHolder extends RecyclerView.ViewHolder  implements  View.OnClickListener {
 
         private Word mWord;
 
@@ -53,6 +54,7 @@ public class WordListFragment extends Fragment {
 
         public WordHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_word, parent,false));
+            itemView.setOnClickListener(this);
 
             mWordNameTextView = itemView.findViewById(R.id.word_name);
             mTagFirstTextView = itemView.findViewById(R.id.word_tag);
@@ -64,6 +66,11 @@ public class WordListFragment extends Fragment {
             mWord = word;
             mWordNameTextView.setText(mWord.getName());
             mTagFirstTextView.setText(mWord.getAllTagsString());
+        }
+
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(getActivity(), mWord.getName() + " clicked...", Toast.LENGTH_SHORT).show();
         }
     }
 
