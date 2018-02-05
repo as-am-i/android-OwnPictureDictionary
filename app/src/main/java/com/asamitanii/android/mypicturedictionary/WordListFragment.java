@@ -55,10 +55,11 @@ public class WordListFragment extends Fragment {
             super(inflater.inflate(R.layout.list_item_word, parent,false));
 
             mWordNameTextView = itemView.findViewById(R.id.word_name);
-            mTagFirstTextView = itemView.findViewById(R.id.word_tag1);
+            mTagFirstTextView = itemView.findViewById(R.id.word_tag);
 
         }
 
+        // bind
         public void bind(Word word) {
             mWord = word;
             mWordNameTextView.setText(mWord.getName());
@@ -88,7 +89,8 @@ public class WordListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(WordHolder holder, int position) {
-
+            Word word = mWords.get(position);
+            holder.bind(word);
         }
 
         @Override
