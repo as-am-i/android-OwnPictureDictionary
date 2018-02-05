@@ -19,17 +19,12 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/word_tag1"
+            android:id="@+id/word_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="#Tag1"
-            android:layout_marginRight="8dp"/>
+            android:layout_marginRight="8dp"
+            android:text="#Tag1" />
 
-        <TextView
-            android:id="@+id/word_tag2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="#Tag2"/>
     </LinearLayout>
 
 </LinearLayout>

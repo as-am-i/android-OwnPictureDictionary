@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import java.util.List;
 
 /**
@@ -26,6 +28,8 @@ public class WordListFragment extends Fragment {
         mWordRecyclerView = (RecyclerView) view.findViewById(R.id.word_recycler_view);
         mWordRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        updateUI();
+
         return view;
     }
 
@@ -41,8 +45,24 @@ public class WordListFragment extends Fragment {
         WordHolder
      */
     private class WordHolder extends RecyclerView.ViewHolder {
+
+        private Word mWord;
+
+        private TextView mWordNameTextView;
+        private TextView mTagFirstTextView;
+
         public WordHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_word, parent,false));
+
+            mWordNameTextView = itemView.findViewById(R.id.word_name);
+            mTagFirstTextView = itemView.findViewById(R.id.word_tag1);
+
+        }
+
+        public void bind(Word word) {
+            mWord = word;
+            mWordNameTextView.setText(mWord.getName());
+            mTagFirstTextView.setText(mWord.getAllTagsString());
         }
     }
 
@@ -61,7 +81,9 @@ public class WordListFragment extends Fragment {
 
         @Override
         public WordHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return null;
+            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+
+            return new WordHolder(layoutInflater, parent);
         }
 
         @Override
@@ -71,7 +93,7 @@ public class WordListFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return 0;
+            return mWords.size();
         }
     }
 }
