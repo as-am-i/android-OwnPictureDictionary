@@ -1,6 +1,7 @@
 package com.asamitanii.android.mypicturedictionary;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -45,7 +46,7 @@ public class WordListFragment extends Fragment {
     /*
         WordHolder
      */
-    private class WordHolder extends RecyclerView.ViewHolder  implements  View.OnClickListener {
+    private class WordHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private Word mWord;
 
@@ -70,7 +71,8 @@ public class WordListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(getActivity(), mWord.getName() + " clicked...", Toast.LENGTH_SHORT).show();
+            Intent intent = WordActivity.newIntent(getActivity(), mWord.getId());
+            startActivity(intent);
         }
     }
 

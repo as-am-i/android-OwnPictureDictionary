@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.UUID;
+
 /**
  * Created by tanii_asami on 2/1/18.
  */
@@ -32,7 +34,9 @@ public class WordFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mWord = new Word();
+
+        UUID wordId = (UUID) getActivity().getIntent().getSerializableExtra(WordActivity.EXTRA_WORD_ID);
+        mWord = WordLab.get(getActivity()).getWord(wordId);
         mList = new List();
         mMeaning = new Meaning();
         mTag = new Tag();
