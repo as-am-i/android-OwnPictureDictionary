@@ -16,6 +16,9 @@ import java.util.UUID;
  */
 
 public class WordFragment extends Fragment {
+
+    private static final String ARG_WORD_ID = "word_id";
+
     private Word mWord;
     private List mList;
     private Meaning mMeaning;
@@ -35,7 +38,8 @@ public class WordFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        UUID wordId = (UUID) getActivity().getIntent().getSerializableExtra(WordActivity.EXTRA_WORD_ID);
+        UUID wordId = (UUID) getArguments().getSerializable(ARG_WORD_ID);
+
         mWord = WordLab.get(getActivity()).getWord(wordId);
         mList = new List();
         mMeaning = new Meaning();
@@ -67,6 +71,15 @@ public class WordFragment extends Fragment {
         return v;
     }
 
+    public static WordFragment newInstance(UUID wordId) {
+
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_WORD_ID, wordId);
+
+        WordFragment fragment = new WordFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
 
 }

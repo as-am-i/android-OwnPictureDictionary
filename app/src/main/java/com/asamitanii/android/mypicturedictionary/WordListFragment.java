@@ -35,12 +35,22 @@ public class WordListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
     private void updateUI() {
         WordLab wordLab = WordLab.get(getActivity());
         List<Word> words = wordLab.getWords();
 
-        mAdapter = new WordAdapter(words);
-        mWordRecyclerView.setAdapter(mAdapter);
+        if (mAdapter == null) {
+            mAdapter = new WordAdapter(words);
+            mWordRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     /*
@@ -71,7 +81,7 @@ public class WordListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Intent intent = WordActivity.newIntent(getActivity(), mWord.getId());
+            Intent intent = WordPagerActivity.newIntent(getActivity(), mWord.getId());
             startActivity(intent);
         }
     }

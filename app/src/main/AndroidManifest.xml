@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".WordActivity"
+            android:name=".WordPagerActivity"
             android:label="Word name in List name">
         </activity>
     </application>
