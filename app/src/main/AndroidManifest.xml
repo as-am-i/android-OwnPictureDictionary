@@ -14,19 +14,16 @@
             android:label="List name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".WordPagerActivity"
-            android:label="Word name in List name">
-        </activity>
-
+            android:label="Word name in List name"></activity>
         <activity
             android:name=".WordEditActivity"
-            android:label="Edit a word">
-        </activity>
+            android:label="Edit a word"></activity>
     </application>
 
 </manifest>

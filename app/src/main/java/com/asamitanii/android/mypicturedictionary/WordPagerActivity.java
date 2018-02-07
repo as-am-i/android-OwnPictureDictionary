@@ -23,12 +23,6 @@ public class WordPagerActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private List<Word> mWords;
 
-    public static Intent newIntent(Context packageContext, UUID wordId) {
-        Intent intent = new Intent(packageContext, WordPagerActivity.class);
-        intent.putExtra(EXTRA_WORD_ID, wordId);
-        return intent;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
