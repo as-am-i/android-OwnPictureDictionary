@@ -113,6 +113,7 @@ public class WordListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
+            // to start an instance of WordPagerActivity when clicked
             Intent intent = WordPagerActivity.newIntent(getActivity(), mWord.getId());
             startActivity(intent);
         }
