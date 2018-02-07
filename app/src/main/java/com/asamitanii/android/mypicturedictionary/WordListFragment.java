@@ -64,7 +64,7 @@ public class WordListFragment extends Fragment {
                 WordLab.get(getActivity()).addWord(word);
 
                 // to start an instance of WordEditActivity to edit the new Word
-                Intent intent = WordPagerActivity.newIntent(getActivity(), word.getId());
+                Intent intent = WordEditActivity.newIntent(getActivity(), word.getId());
                 startActivity(intent);
 
                 return true;

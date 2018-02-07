@@ -22,6 +22,11 @@
             android:name=".WordPagerActivity"
             android:label="Word name in List name">
         </activity>
+
+        <activity
+            android:name=".WordEditActivity"
+            android:label="Edit a word">
+        </activity>
     </application>
 
 </manifest>
