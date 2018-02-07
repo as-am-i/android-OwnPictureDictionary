@@ -36,7 +36,7 @@ public class WordPagerActivity extends AppCompatActivity {
 
         UUID wordId = (UUID) getIntent().getSerializableExtra(EXTRA_WORD_ID);
 
-        mViewPager = (ViewPager) findViewById(R.id.word_view_pager);
+        mViewPager = findViewById(R.id.word_view_pager);
 
         mWords = WordLab.get(this).getWords();
         FragmentManager fragmentManager = getSupportFragmentManager();

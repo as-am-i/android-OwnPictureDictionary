@@ -25,20 +25,14 @@ public class WordLab {
     // singleton
     private WordLab(Context context) {
         mWords = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
-            Word word = new Word();
-
-            word.setName("Word" + i);
-            Tag tag = new Tag();
-            tag.setTagName("tagtagtag");
-            word.addTag(tag);
-
-            mWords.add(word);
-        }
     }
 
     public List<Word> getWords() {
         return mWords;
+    }
+
+    public void addWord(Word w) {
+        mWords.add(w);
     }
 
     public Word getWord(UUID id) {

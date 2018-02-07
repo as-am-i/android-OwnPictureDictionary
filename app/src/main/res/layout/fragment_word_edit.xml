@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,20 +24,21 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <TextView
+    <EditText
         android:id="@+id/word_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Word Name"
+        android:hint="@string/word_name_hint"
         android:textAlignment="center"
         android:textSize="24sp" />
 
-    <TextView
+    <EditText
         android:id="@+id/word_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Word description space"
-        android:textAlignment="center"/>
+        android:hint="@string/word_text_hint"
+        android:textAlignment="center"
+        android:textSize="14sp" />
 
     <ImageView
         android:id="@+id/meaning_image_1"
@@ -75,32 +75,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp">
 
-        <TextView
+        <EditText
             android:id="@+id/word_tag1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="#Tag1"
-            android:layout_marginRight="8dp"/>
+            android:layout_marginRight="8dp"
+            android:hint="@string/tag_text_hint" />
 
-        <TextView
+        <EditText
             android:id="@+id/word_tag2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="#Tag2"/>
+            android:layout_height="match_parent"
+            android:hint="@string/tag_text_hint" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/word_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/word_search_label"
-        android:textAlignment="textEnd" />
-
-    <TextView
-        android:id="@+id/word_added_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/word_date_label"/>
-
-
 </LinearLayout>
