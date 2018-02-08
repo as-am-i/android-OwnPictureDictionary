@@ -12,7 +12,7 @@ import java.util.UUID;
 
 public class WordEditActivity extends SingleFragmentActivity {
 
-    private static final String EXTRA_WORD_ID = "com.asamitanii.android.mypicturedictionary.word_id";
+    public static final String EXTRA_WORD_ID = "com.asamitanii.android.mypicturedictionary.word_id";
 
     @Override
     protected Fragment createFragment() {

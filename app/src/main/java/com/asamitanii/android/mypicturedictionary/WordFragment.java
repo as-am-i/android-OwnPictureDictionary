@@ -21,8 +21,6 @@ public class WordFragment extends Fragment {
 
     private Word mWord;
     private List mList;
-    private Meaning mMeaning;
-    private Tag mTag;
     private TextView mListName;
     private TextView mWordName;
     private TextView mWordDescription;
@@ -42,8 +40,6 @@ public class WordFragment extends Fragment {
 
         mWord = WordLab.get(getActivity()).getWord(wordId);
         mList = new List();
-        mMeaning = new Meaning();
-        mTag = new Tag();
     }
 
     @Override
@@ -57,7 +53,7 @@ public class WordFragment extends Fragment {
         mWordName.setText(mWord.getName());
 
         mWordDescription = v.findViewById(R.id.word_description);
-        mWordDescription.setText(mMeaning.getDescription());
+        mWordDescription.setText(mWord.getTextMeaning());
 
         mImageFirst = v.findViewById(R.id.meaning_image_1);
         mImageSecond = v.findViewById(R.id.meaning_image_2);
@@ -65,8 +61,8 @@ public class WordFragment extends Fragment {
 
         mTagFirst = v.findViewById(R.id.word_tag1);
         mTagSecond = v.findViewById(R.id.word_tag2);
-        mTagFirst.setText(mTag.getTagName());
-        mTagSecond.setText(mTag.getTagName());
+        mTagFirst.setText(mWord.getTagFirst());
+        mTagSecond.setText(mWord.getTagSecond());
 
         return v;
     }

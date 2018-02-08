@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import java.util.UUID;
+
 /**
  * Created by tanii_asami on 2/6/18.
  */
@@ -28,9 +30,9 @@ public class WordEditFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mWord = new Word();
-        mMeaning = new Meaning();
-        mTag = new Tag();
+
+        UUID wordId = (UUID) getActivity().getIntent().getSerializableExtra(WordEditActivity.EXTRA_WORD_ID);
+        mWord = WordLab.get(getActivity()).getWord(wordId);
     }
 
     @Override
@@ -40,6 +42,7 @@ public class WordEditFragment extends Fragment {
 
 
         mNameField = v.findViewById(R.id.word_name);
+        mNameField.setText(mWord.getName());
         mNameField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -58,6 +61,10 @@ public class WordEditFragment extends Fragment {
         });
 
         mDescriptionField = v.findViewById(R.id.word_description);
+
+        // in the EditField, get an instance of Meaning Model and get String from ihe instance
+        mDescriptionField.setText(mWord.getTextMeaning());
+
         mDescriptionField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -66,7 +73,7 @@ public class WordEditFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mMeaning.setDescription(s.toString());
+                mWord.setTextMeaning(s.toString());
             }
 
             @Override
@@ -76,6 +83,7 @@ public class WordEditFragment extends Fragment {
         });
 
         mTagFirst = v.findViewById(R.id.word_tag1);
+        mTagFirst.setText(mWord.getTagFirst());
         mTagFirst.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -84,7 +92,7 @@ public class WordEditFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mTag.setTagName(s.toString());
+                mWord.setTagFirst(s.toString());
             }
 
             @Override
@@ -94,6 +102,8 @@ public class WordEditFragment extends Fragment {
         });
 
         mTagSecond = v.findViewById(R.id.word_tag2);
+        mTagSecond.setText(mWord.getTagSecond());
+
         mTagSecond.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -102,7 +112,7 @@ public class WordEditFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mTag.setTagName(s.toString());
+                mWord.setTagSecond(s.toString());
             }
 
             @Override

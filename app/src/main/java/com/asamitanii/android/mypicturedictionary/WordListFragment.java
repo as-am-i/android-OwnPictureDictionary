@@ -36,7 +36,7 @@ public class WordListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_word_list, container, false);
 
-        mWordRecyclerView = (RecyclerView) view.findViewById(R.id.word_recycler_view);
+        mWordRecyclerView = view.findViewById(R.id.word_recycler_view);
         mWordRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
@@ -94,21 +94,24 @@ public class WordListFragment extends Fragment {
 
         private TextView mWordNameTextView;
         private TextView mTagFirstTextView;
+        private TextView mTagSecondeTextView;
 
         public WordHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_word, parent,false));
             itemView.setOnClickListener(this);
 
             mWordNameTextView = itemView.findViewById(R.id.word_name);
-            mTagFirstTextView = itemView.findViewById(R.id.word_tag);
+            mTagFirstTextView = itemView.findViewById(R.id.word_tag1);
+            mTagSecondeTextView = itemView.findViewById(R.id.word_tag2);
 
         }
 
-        // bind
+        // bind inside WordHolder
         public void bind(Word word) {
             mWord = word;
             mWordNameTextView.setText(mWord.getName());
-            mTagFirstTextView.setText(mWord.getAllTagsString());
+            mTagFirstTextView.setText(mWord.getTagFirst());
+            mTagSecondeTextView.setText(mWord.getTagSecond());
         }
 
         @Override
