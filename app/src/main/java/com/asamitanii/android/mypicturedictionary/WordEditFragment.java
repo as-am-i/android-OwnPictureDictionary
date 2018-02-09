@@ -58,6 +58,13 @@ public class WordEditFragment extends Fragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+
+        WordLab.get(getActivity()).updateWord(mWord);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_word_edit, container, false);

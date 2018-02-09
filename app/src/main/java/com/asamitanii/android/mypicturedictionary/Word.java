@@ -27,7 +27,7 @@ public class Word {
     //private List<Meaning> mMeaningList;
 
     public Word() {
-        mId = UUID.randomUUID();
+        this(UUID.randomUUID());
         setName("New");
 
         //mTagList = new ArrayList<>();
@@ -35,6 +35,11 @@ public class Word {
 
       //  mMeaningList = new ArrayList<>();
 
+    }
+
+    public Word(UUID id) {
+        mId = id;
+        setName("New");
     }
 
     public UUID getId() {
