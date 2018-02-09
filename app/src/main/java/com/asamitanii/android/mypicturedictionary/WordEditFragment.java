@@ -42,6 +42,9 @@ public class WordEditFragment extends Fragment {
     private ImageView mSecondPhoto;
     private File mMeaningImageSecond;
 
+    private ImageView mThirdPhoto;
+    private File mMeaningImageThird;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,7 @@ public class WordEditFragment extends Fragment {
         // now I have a file here
         mMeaningImageFirst = WordLab.get(getActivity()).getPhotoFile(mWord, 1);
         mMeaningImageSecond = WordLab.get(getActivity()).getPhotoFile(mWord,2);
+        mMeaningImageThird = WordLab.get(getActivity()).getPhotoFile(mWord, 3);
     }
 
     @Override
@@ -191,6 +195,32 @@ public class WordEditFragment extends Fragment {
             }
         });
 
+        mThirdPhoto = v.findViewById(R.id.meaning_image_3);
+        mThirdPhoto.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                PickImageDialog.build(new PickSetup())
+                        .setOnPickResult(new IPickResult() {
+                            @Override
+                            public void onPickResult(PickResult r) {
+
+                                OutputStream os;
+                                try {
+                                    os = new FileOutputStream(mMeaningImageThird);
+                                    r.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, os);
+                                    os.flush();
+                                    os.close();
+                                    updatePhotoView();
+                                } catch (Exception e) {
+                                    Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
+                                }
+                            }
+                        }).show(getActivity().getSupportFragmentManager());
+
+            }
+        });
+
 
         updatePhotoView();
 
@@ -215,6 +245,13 @@ public class WordEditFragment extends Fragment {
         } else {
             Bitmap bitmap = PictureUtils.getScaledBitmap(mMeaningImageSecond.getPath(), getActivity());
             mSecondPhoto.setImageBitmap(bitmap);
+        }
+
+        if (mMeaningImageThird == null || !mMeaningImageThird.exists()) {
+            mThirdPhoto.setImageDrawable(null);
+        } else {
+            Bitmap bitmap = PictureUtils.getScaledBitmap(mMeaningImageThird.getPath(), getActivity());
+            mThirdPhoto.setImageBitmap(bitmap);
         }
 
     }
