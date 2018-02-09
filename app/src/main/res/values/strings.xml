@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MyPictureDictionary</string>
     <string name="word_list_preposition">In</string>
+    <string name="word_list_name">Default_List</string>
     <string name="word_date_label">Added at %1$s</string>
     <string name="word_search_label">Search in ...</string>
     <string name="new_word">New word</string>

@@ -44,6 +44,10 @@ public class WordPagerActivity extends AppCompatActivity {
             @Override
             public Fragment getItem(int position) {
                 Word word = mWords.get(position);
+
+                // to show the label on Toolbar
+                setTitle(word.getName());
+
                 return WordFragment.newInstance(word.getId());
             }
 

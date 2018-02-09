@@ -28,7 +28,7 @@ public class Word {
 
     public Word() {
         mId = UUID.randomUUID();
-        setName("new");
+        setName("New");
 
         //mTagList = new ArrayList<>();
         //mTagList.add(new Tag());

@@ -22,8 +22,7 @@
                 android:resource="@xml/picker_provider_paths" />
         </provider>
         <activity
-            android:name=".WordListActivity"
-            android:label="List name">
+            android:name=".WordListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,12 +31,10 @@
         </activity>
         <activity
             android:name=".WordPagerActivity"
-            android:label="Word name in List name"
             android:parentActivityName=".WordListActivity"></activity>
         <activity
             android:name=".WordEditActivity"
-            android:parentActivityName=".WordPagerActivity"
-            android:label="Edit a word"></activity>
+            android:parentActivityName=".WordPagerActivity"></activity>
     </application>
 
 </manifest>

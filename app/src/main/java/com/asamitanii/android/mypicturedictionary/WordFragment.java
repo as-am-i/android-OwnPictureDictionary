@@ -67,8 +67,8 @@ public class WordFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_word, container, false);
 
-        mListName = v.findViewById(R.id.word_list_name);
-        mListName.setText(mList.getListName());
+//        mListName = v.findViewById(R.id.word_list_name);
+//        mListName.setText(mList.getListName());
 
         mWordName = v.findViewById(R.id.word_name);
         mWordName.setText(mWord.getName());

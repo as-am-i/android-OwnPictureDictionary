@@ -14,7 +14,6 @@ public class List {
     public List() {
         mId = UUID.randomUUID();
         setListName("Default_1");
-
     }
 
     public UUID getId() {
