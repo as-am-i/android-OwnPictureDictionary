@@ -113,6 +113,7 @@ public class WordListFragment extends Fragment {
             mWordRecyclerView.setAdapter(mAdapter);
         } else {
             mAdapter.notifyDataSetChanged();
+            mAdapter.setWords(words);
         }
 
         if (words.size() > 0) {
@@ -203,6 +204,11 @@ public class WordListFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mWords.size();
+        }
+
+        // to used in updateUI() for refreshing model data with database
+        public void setWords(List<Word> words) {
+            mWords = words;
         }
     }
 }
