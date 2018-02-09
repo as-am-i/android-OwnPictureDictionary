@@ -1,5 +1,6 @@
 package com.asamitanii.android.mypicturedictionary;
 
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
 import java.util.UUID;
 
 /**
@@ -24,11 +26,14 @@ public class WordFragment extends Fragment {
     private TextView mListName;
     private TextView mWordName;
     private TextView mWordDescription;
-    private ImageView mImageFirst;
+
     private ImageView mImageSecond;
     private ImageView mImageThird;
     private TextView mTagFirst;
     private TextView mTagSecond;
+
+    private ImageView mFirstPhoto;
+    private File mMeaningImageFirst;
 
 
 
@@ -39,6 +44,9 @@ public class WordFragment extends Fragment {
         UUID wordId = (UUID) getArguments().getSerializable(ARG_WORD_ID);
 
         mWord = WordLab.get(getActivity()).getWord(wordId);
+
+        mMeaningImageFirst = WordLab.get(getActivity()).getPhotoFile(mWord);
+
         mList = new List();
     }
 
@@ -55,7 +63,8 @@ public class WordFragment extends Fragment {
         mWordDescription = v.findViewById(R.id.word_description);
         mWordDescription.setText(mWord.getTextMeaning());
 
-        mImageFirst = v.findViewById(R.id.meaning_image_1);
+        mFirstPhoto = v.findViewById(R.id.meaning_image_1);
+
         mImageSecond = v.findViewById(R.id.meaning_image_2);
         mImageThird = v.findViewById(R.id.meaning_image_3);
 
@@ -63,6 +72,8 @@ public class WordFragment extends Fragment {
         mTagSecond = v.findViewById(R.id.word_tag2);
         mTagFirst.setText(mWord.getTagFirst());
         mTagSecond.setText(mWord.getTagSecond());
+
+        updatePhotoView();
 
         return v;
     }
@@ -75,6 +86,15 @@ public class WordFragment extends Fragment {
         WordFragment fragment = new WordFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    private void updatePhotoView() {
+        if (mMeaningImageFirst == null || !mMeaningImageFirst.exists()) {
+            mFirstPhoto.setImageDrawable(null);
+        } else {
+            Bitmap bitmap = PictureUtils.getScaledBitmap(mMeaningImageFirst.getPath(), getActivity());
+            mFirstPhoto.setImageBitmap(bitmap);
+        }
     }
 
 

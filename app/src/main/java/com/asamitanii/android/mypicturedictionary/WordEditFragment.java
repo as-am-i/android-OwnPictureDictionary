@@ -1,16 +1,28 @@
 package com.asamitanii.android.mypicturedictionary;
 
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.vansuita.pickimage.bean.PickResult;
+import com.vansuita.pickimage.bundle.PickSetup;
+import com.vansuita.pickimage.dialog.PickImageDialog;
+import com.vansuita.pickimage.listeners.IPickResult;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.UUID;
 
 /**
@@ -26,6 +38,8 @@ public class WordEditFragment extends Fragment {
     private EditText mDescriptionField;
     private EditText mTagFirst;
     private EditText mTagSecond;
+    private ImageView mFirstPhoto;
+    private File mMeaningImageFirst;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +47,8 @@ public class WordEditFragment extends Fragment {
 
         UUID wordId = (UUID) getActivity().getIntent().getSerializableExtra(WordEditActivity.EXTRA_WORD_ID);
         mWord = WordLab.get(getActivity()).getWord(wordId);
+        // now I have a file here
+        mMeaningImageFirst = WordLab.get(getActivity()).getPhotoFile(mWord);
     }
 
     @Override
@@ -121,8 +137,47 @@ public class WordEditFragment extends Fragment {
             }
         });
 
+        mFirstPhoto = v.findViewById(R.id.meaning_image_1);
+        mFirstPhoto.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                PickImageDialog.build(new PickSetup())
+                        .setOnPickResult(new IPickResult() {
+                            @Override
+                            public void onPickResult(PickResult r) {
+
+                                OutputStream os;
+                                try {
+                                    os = new FileOutputStream(mMeaningImageFirst);
+                                    r.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, os);
+                                    os.flush();
+                                    os.close();
+                                    updatePhotoView();
+                                } catch (Exception e) {
+                                    Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
+                                }
+                            }
+                        }).show(getActivity().getSupportFragmentManager());
+
+            }
+        });
+
+        updatePhotoView();
+
+
+
 
         return v;
 
+    }
+
+    private void updatePhotoView() {
+        if (mMeaningImageFirst == null || !mMeaningImageFirst.exists()) {
+            mFirstPhoto.setImageDrawable(null);
+        } else {
+            Bitmap bitmap = PictureUtils.getScaledBitmap(mMeaningImageFirst.getPath(), getActivity());
+            mFirstPhoto.setImageBitmap(bitmap);
+        }
     }
 }

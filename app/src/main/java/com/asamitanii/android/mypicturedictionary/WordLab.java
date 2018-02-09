@@ -2,6 +2,7 @@ package com.asamitanii.android.mypicturedictionary;
 
 import android.content.Context;
 
+import java.io.File;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -15,6 +16,8 @@ public class WordLab {
 
     private List<Word> mWords;
 
+    private Context mContext;
+
     public static WordLab get(Context context) {
         if (sWordLab == null) {
             sWordLab = new WordLab(context);
@@ -24,6 +27,7 @@ public class WordLab {
 
     // singleton
     private WordLab(Context context) {
+        mContext = context;
         mWords = new ArrayList<>();
     }
 
@@ -42,5 +46,10 @@ public class WordLab {
             }
         }
         return null;
+    }
+
+    public File getPhotoFile(Word mWord) {
+        File fileDir = mContext.getFilesDir();
+        return new File(fileDir, mWord.getPhotoFilename());
     }
 }

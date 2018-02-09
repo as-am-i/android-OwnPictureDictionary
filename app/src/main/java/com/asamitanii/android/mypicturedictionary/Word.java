@@ -1,5 +1,8 @@
 package com.asamitanii.android.mypicturedictionary;
 
+import android.support.v4.content.FileProvider;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.List;
@@ -111,5 +114,9 @@ public class Word {
 
     public void setTagSecond(String tagSecond) {
         mTagSecond = tagSecond;
+    }
+
+    public String getPhotoFilename() {
+        return "IMG_" + getId().toString() + ".jpg";
     }
 }
