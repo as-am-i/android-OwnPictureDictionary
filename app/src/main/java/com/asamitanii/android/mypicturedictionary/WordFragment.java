@@ -45,7 +45,7 @@ public class WordFragment extends Fragment {
 
         mWord = WordLab.get(getActivity()).getWord(wordId);
 
-        mMeaningImageFirst = WordLab.get(getActivity()).getPhotoFile(mWord);
+        mMeaningImageFirst = WordLab.get(getActivity()).getPhotoFile(mWord, 1);
 
         mList = new List();
     }

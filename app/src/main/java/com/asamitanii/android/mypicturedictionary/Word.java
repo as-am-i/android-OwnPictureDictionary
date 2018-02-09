@@ -116,7 +116,7 @@ public class Word {
         mTagSecond = tagSecond;
     }
 
-    public String getPhotoFilename() {
-        return "IMG_" + getId().toString() + ".jpg";
+    public String getPhotoFilename(int number) {
+        return "IMG_" + getId().toString() + "_" + number + ".jpg";
     }
 }

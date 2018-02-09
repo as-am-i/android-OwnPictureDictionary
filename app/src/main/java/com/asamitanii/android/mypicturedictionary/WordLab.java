@@ -48,8 +48,8 @@ public class WordLab {
         return null;
     }
 
-    public File getPhotoFile(Word mWord) {
+    public File getPhotoFile(Word mWord, int number) {
         File fileDir = mContext.getFilesDir();
-        return new File(fileDir, mWord.getPhotoFilename());
+        return new File(fileDir, mWord.getPhotoFilename(number));
     }
 }

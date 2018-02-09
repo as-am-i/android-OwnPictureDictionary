@@ -1,10 +1,7 @@
 package com.asamitanii.android.mypicturedictionary;
 
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -38,8 +35,12 @@ public class WordEditFragment extends Fragment {
     private EditText mDescriptionField;
     private EditText mTagFirst;
     private EditText mTagSecond;
+
     private ImageView mFirstPhoto;
     private File mMeaningImageFirst;
+
+    private ImageView mSecondPhoto;
+    private File mMeaningImageSecond;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,8 @@ public class WordEditFragment extends Fragment {
         UUID wordId = (UUID) getActivity().getIntent().getSerializableExtra(WordEditActivity.EXTRA_WORD_ID);
         mWord = WordLab.get(getActivity()).getWord(wordId);
         // now I have a file here
-        mMeaningImageFirst = WordLab.get(getActivity()).getPhotoFile(mWord);
+        mMeaningImageFirst = WordLab.get(getActivity()).getPhotoFile(mWord, 1);
+        mMeaningImageSecond = WordLab.get(getActivity()).getPhotoFile(mWord,2);
     }
 
     @Override
@@ -163,6 +165,33 @@ public class WordEditFragment extends Fragment {
             }
         });
 
+        mSecondPhoto = v.findViewById(R.id.meaning_image_2);
+        mSecondPhoto.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                PickImageDialog.build(new PickSetup())
+                        .setOnPickResult(new IPickResult() {
+                            @Override
+                            public void onPickResult(PickResult r) {
+
+                                OutputStream os;
+                                try {
+                                    os = new FileOutputStream(mMeaningImageSecond);
+                                    r.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, os);
+                                    os.flush();
+                                    os.close();
+                                    updatePhotoView();
+                                } catch (Exception e) {
+                                    Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
+                                }
+                            }
+                        }).show(getActivity().getSupportFragmentManager());
+
+            }
+        });
+
+
         updatePhotoView();
 
 
@@ -179,5 +208,13 @@ public class WordEditFragment extends Fragment {
             Bitmap bitmap = PictureUtils.getScaledBitmap(mMeaningImageFirst.getPath(), getActivity());
             mFirstPhoto.setImageBitmap(bitmap);
         }
+
+        if (mMeaningImageSecond == null || !mMeaningImageSecond.exists()) {
+            mSecondPhoto.setImageDrawable(null);
+        } else {
+            Bitmap bitmap = PictureUtils.getScaledBitmap(mMeaningImageSecond.getPath(), getActivity());
+            mSecondPhoto.setImageBitmap(bitmap);
+        }
+
     }
 }
