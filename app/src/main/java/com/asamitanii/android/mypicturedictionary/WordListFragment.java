@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -31,6 +30,8 @@ public class WordListFragment extends Fragment {
     private WordAdapter mAdapter;
     private boolean mSubtitleVisible;
 
+    private TextView mMessageNoWords;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,8 @@ public class WordListFragment extends Fragment {
 
         mWordRecyclerView = view.findViewById(R.id.word_recycler_view);
         mWordRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        mMessageNoWords = view.findViewById(R.id.message_no_word);
 
         if (savedInstanceState != null) {
             mSubtitleVisible = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
@@ -112,6 +115,12 @@ public class WordListFragment extends Fragment {
             mAdapter.notifyDataSetChanged();
         }
 
+        if (words.size() > 0) {
+            mMessageNoWords.setVisibility(View.GONE);
+        } else {
+            mMessageNoWords.setVisibility(View.VISIBLE);
+        }
+
         updateSubtitle();
     }
 
@@ -137,7 +146,7 @@ public class WordListFragment extends Fragment {
 
         private TextView mWordNameTextView;
         private TextView mTagFirstTextView;
-        private TextView mTagSecondeTextView;
+        private TextView mTagSecondTextView;
 
         public WordHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_word, parent,false));
@@ -145,7 +154,7 @@ public class WordListFragment extends Fragment {
 
             mWordNameTextView = itemView.findViewById(R.id.word_name);
             mTagFirstTextView = itemView.findViewById(R.id.word_tag1);
-            mTagSecondeTextView = itemView.findViewById(R.id.word_tag2);
+            mTagSecondTextView = itemView.findViewById(R.id.word_tag2);
 
         }
 
@@ -154,7 +163,7 @@ public class WordListFragment extends Fragment {
             mWord = word;
             mWordNameTextView.setText(mWord.getName());
             mTagFirstTextView.setText(mWord.getTagFirst());
-            mTagSecondeTextView.setText(mWord.getTagSecond());
+            mTagSecondTextView.setText(mWord.getTagSecond());
         }
 
         @Override
