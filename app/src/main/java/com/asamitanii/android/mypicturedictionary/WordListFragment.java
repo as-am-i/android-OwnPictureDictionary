@@ -117,8 +117,8 @@ public class WordListFragment extends Fragment {
 
     private void updateSubtitle() {
         WordLab wordLab = WordLab.get(getActivity());
-        int wordCount = wordLab.getWords().size();
-        String subtitle = getString(R.string.subtitle_format, wordCount);
+        int wordSize = wordLab.getWords().size();
+        String subtitle = getResources().getQuantityString(R.plurals.subtitle_prural, wordSize, wordSize);
 
         if (!mSubtitleVisible) {
             subtitle = null;

@@ -12,4 +12,9 @@
     <string name="tag_text_hint">#tag</string>
     <string name="edit_word">Edit Word</string>
     <string name="delete_word">Delete Word</string>
+
+    <plurals name="subtitle_prural">
+        <item quantity="one">%1$d word</item>
+        <item quantity="other">%1$d words</item>
+    </plurals>
 </resources>
