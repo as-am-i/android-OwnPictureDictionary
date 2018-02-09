@@ -35,6 +35,9 @@ public class WordFragment extends Fragment {
     private ImageView mFirstPhoto;
     private File mMeaningImageFirst;
 
+    private ImageView mSecondPhoto;
+    private File mMeaningImageSecond;
+
 
 
     @Override
@@ -46,6 +49,7 @@ public class WordFragment extends Fragment {
         mWord = WordLab.get(getActivity()).getWord(wordId);
 
         mMeaningImageFirst = WordLab.get(getActivity()).getPhotoFile(mWord, 1);
+        mMeaningImageSecond = WordLab.get(getActivity()).getPhotoFile(mWord, 2);
 
         mList = new List();
     }
@@ -64,8 +68,9 @@ public class WordFragment extends Fragment {
         mWordDescription.setText(mWord.getTextMeaning());
 
         mFirstPhoto = v.findViewById(R.id.meaning_image_1);
+        mSecondPhoto = v.findViewById(R.id.meaning_image_2);
 
-        mImageSecond = v.findViewById(R.id.meaning_image_2);
+
         mImageThird = v.findViewById(R.id.meaning_image_3);
 
         mTagFirst = v.findViewById(R.id.word_tag1);
@@ -95,6 +100,14 @@ public class WordFragment extends Fragment {
             Bitmap bitmap = PictureUtils.getScaledBitmap(mMeaningImageFirst.getPath(), getActivity());
             mFirstPhoto.setImageBitmap(bitmap);
         }
+
+        if (mMeaningImageSecond == null || !mMeaningImageSecond.exists()) {
+            mSecondPhoto.setImageDrawable(null);
+        } else {
+            Bitmap bitmap = PictureUtils.getScaledBitmap(mMeaningImageSecond.getPath(), getActivity());
+            mSecondPhoto.setImageBitmap(bitmap);
+        }
+
     }
 
 

@@ -202,6 +202,7 @@ public class WordEditFragment extends Fragment {
     }
 
     private void updatePhotoView() {
+        // no instance created or no picture the user didn't take
         if (mMeaningImageFirst == null || !mMeaningImageFirst.exists()) {
             mFirstPhoto.setImageDrawable(null);
         } else {
