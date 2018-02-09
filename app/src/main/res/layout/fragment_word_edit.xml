@@ -70,22 +70,24 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/word_tag1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:hint="@string/tag_text_hint" />
+            android:hint="@string/tag_text_hint"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/word_tag2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:hint="@string/tag_text_hint" />
+            android:hint="@string/tag_text_hint"
+            android:textSize="14sp" />
     </LinearLayout>
 </LinearLayout>

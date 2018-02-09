@@ -9,5 +9,5 @@
     <string name="subtitle_format">%1$d words</string>
     <string name="word_name_hint">Word</string>
     <string name="word_text_hint">Description in text</string>
-    <string name="tag_text_hint">tag</string>
+    <string name="tag_text_hint">#tag</string>
 </resources>
