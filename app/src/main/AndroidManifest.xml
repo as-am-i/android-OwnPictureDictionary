@@ -32,9 +32,11 @@
         </activity>
         <activity
             android:name=".WordPagerActivity"
-            android:label="Word name in List name"></activity>
+            android:label="Word name in List name"
+            android:parentActivityName=".WordListActivity"></activity>
         <activity
             android:name=".WordEditActivity"
+            android:parentActivityName=".WordPagerActivity"
             android:label="Edit a word"></activity>
     </application>
 
