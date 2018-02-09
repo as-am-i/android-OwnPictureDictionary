@@ -1,6 +1,9 @@
 package com.asamitanii.android.mypicturedictionary;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.asamitanii.android.mypicturedictionary.detabase.WordBaseHelper;
 
 import java.io.File;
 import java.util.List;
@@ -15,8 +18,8 @@ public class WordLab {
     private static WordLab sWordLab;
 
     private List<Word> mWords;
-
     private Context mContext;
+    private SQLiteDatabase mDatabase;
 
     public static WordLab get(Context context) {
         if (sWordLab == null) {
@@ -27,7 +30,8 @@ public class WordLab {
 
     // singleton
     private WordLab(Context context) {
-        mContext = context;
+        mContext = context.getApplicationContext();
+        mDatabase = new WordBaseHelper(mContext).getWritableDatabase();
         mWords = new ArrayList<>();
     }
 
