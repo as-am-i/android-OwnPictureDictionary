@@ -39,6 +39,10 @@ public class WordLab {
         mWords.add(w);
     }
 
+    public void deleteWord(Word w) {
+        mWords.remove(w);
+    }
+
     public Word getWord(UUID id) {
         for (Word word : mWords) {
             if (word.getId().equals(id)) {

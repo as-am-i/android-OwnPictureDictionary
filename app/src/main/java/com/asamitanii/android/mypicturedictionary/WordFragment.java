@@ -100,11 +100,14 @@ public class WordFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.edit_word:
-
                 Intent intent = WordEditActivity.newIntent(getActivity(), mWord.getId());
                 startActivity(intent);
-
                 return true;
+
+            case R.id.delete_word:
+                WordLab.get(getActivity()).deleteWord(mWord);
+                getActivity().finish();
+
             default:
                 return super.onOptionsItemSelected(item);
         }

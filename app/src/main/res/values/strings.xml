@@ -11,4 +11,5 @@
     <string name="word_text_hint">Description in text</string>
     <string name="tag_text_hint">#tag</string>
     <string name="edit_word">Edit Word</string>
+    <string name="delete_word">Delete Word</string>
 </resources>
