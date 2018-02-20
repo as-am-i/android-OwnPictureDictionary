@@ -27,8 +27,8 @@ public class WordCursorWrapper extends CursorWrapper {
         Word word = new Word(UUID.fromString(uuidString));
         word.setName(word_name);
         word.setTextMeaning(meaning_text);
-        word.setTagFirst(tag_first);
-        word.setTagSecond(tag_second);
+//        word.setTagFirst(tag_first);
+//        word.setTagSecond(tag_second);
 
         return word;
     }

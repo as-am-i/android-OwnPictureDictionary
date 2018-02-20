@@ -1,6 +1,7 @@
 package com.asamitanii.android.mypicturedictionary;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -145,26 +147,57 @@ public class WordListFragment extends Fragment {
 
         private Word mWord;
 
+        private RecyclerView mTagRecyclerView;
+        private HorizontalTagAdapter mTagAdapter;
+
         private TextView mWordNameTextView;
-        private TextView mTagFirstTextView;
-        private TextView mTagSecondTextView;
 
         public WordHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_word, parent,false));
             itemView.setOnClickListener(this);
 
+            // inflate word name here
             mWordNameTextView = itemView.findViewById(R.id.word_name);
-            mTagFirstTextView = itemView.findViewById(R.id.word_tag1);
-            mTagSecondTextView = itemView.findViewById(R.id.word_tag2);
 
+            // inflate tags here
+            mTagRecyclerView = itemView.findViewById(R.id.tag_recycler_view);
+
+            // overrided new LinearLayoutManager to use HORIZONTAL for LayoutManager
+            Context context = itemView.getContext();
+            mTagRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+
+            // create a new tagAdapter and set it to TagRecyclerView
+            mTagAdapter = new HorizontalTagAdapter();
         }
 
         // bind inside WordHolder
         public void bind(Word word) {
             mWord = word;
             mWordNameTextView.setText(mWord.getName());
-            mTagFirstTextView.setText(mWord.getTagFirst());
-            mTagSecondTextView.setText(mWord.getTagSecond());
+
+            // bind tags data here
+            mWord.addTag("#fake");
+            mWord.addTag("#fake1");
+            mWord.addTag("#fake2");
+            mWord.addTag("#fake");
+            mWord.addTag("#fake1");
+            mWord.addTag("#fake2");
+            mWord.addTag("#fake");
+            mWord.addTag("#fake1");
+            mWord.addTag("#fake2");
+            mWord.addTag("#fake");
+            mWord.addTag("#fake1");
+            mWord.addTag("#fake2");
+            mWord.addTag("#fake");
+            mWord.addTag("#fake1");
+            mWord.addTag("#fake2");
+
+            mTagAdapter.setTags(mWord.getTagList());
+            mTagRecyclerView.setAdapter(mTagAdapter);
+
+
+//            mTagFirstTextView.setText(mWord.getTagFirst());
+//            mTagSecondTextView.setText(mWord.getTagSecond());
         }
 
         @Override

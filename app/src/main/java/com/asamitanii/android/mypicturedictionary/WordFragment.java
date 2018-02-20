@@ -89,8 +89,8 @@ public class WordFragment extends Fragment {
 
         mTagFirst = v.findViewById(R.id.word_tag1);
         mTagSecond = v.findViewById(R.id.word_tag2);
-        mTagFirst.setText(mWord.getTagFirst());
-        mTagSecond.setText(mWord.getTagSecond());
+        //mTagFirst.setText(mWord.getTagFirst());
+        //mTagSecond.setText(mWord.getTagSecond());
 
         updatePhotoView();
 

@@ -112,7 +112,7 @@ public class WordEditFragment extends Fragment {
         });
 
         mTagFirst = v.findViewById(R.id.word_tag1);
-        mTagFirst.setText(mWord.getTagFirst());
+        //mTagFirst.setText(mWord.getTagFirst());
         mTagFirst.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -121,7 +121,7 @@ public class WordEditFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mWord.setTagFirst(s.toString());
+               // mWord.setTagFirst(s.toString());
             }
 
             @Override
@@ -131,7 +131,7 @@ public class WordEditFragment extends Fragment {
         });
 
         mTagSecond = v.findViewById(R.id.word_tag2);
-        mTagSecond.setText(mWord.getTagSecond());
+        //mTagSecond.setText(mWord.getTagSecond());
 
         mTagSecond.addTextChangedListener(new TextWatcher() {
             @Override
@@ -141,7 +141,7 @@ public class WordEditFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mWord.setTagSecond(s.toString());
+          //      mWord.setTagSecond(s.toString());
             }
 
             @Override
