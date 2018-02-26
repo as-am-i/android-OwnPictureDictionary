@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,7 +17,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.UUID;
+
+import java.util.List;
 
 /**
  * Created by tanii_asami on 2/1/18.
@@ -24,6 +29,10 @@ import java.util.UUID;
 public class WordFragment extends Fragment {
 
     private static final String ARG_WORD_ID = "word_id";
+
+    // tags
+    private RecyclerView mTagRecyclerView;
+    private HorizontalTagAdapter mTagAdapter;
 
     private Word mWord;
     private List mList;
@@ -60,7 +69,7 @@ public class WordFragment extends Fragment {
         mMeaningImageSecond = WordLab.get(getActivity()).getPhotoFile(mWord, 2);
         mMeaningImageThird = WordLab.get(getActivity()).getPhotoFile(mWord, 3);
 
-        mList = new List();
+        mList = mWord.getTagList();
     }
 
     @Override
@@ -68,6 +77,12 @@ public class WordFragment extends Fragment {
         super.onPause();
 
         WordLab.get(getActivity()).updateWord(mWord);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
     }
 
     @Override
@@ -87,10 +102,11 @@ public class WordFragment extends Fragment {
         mSecondPhoto = v.findViewById(R.id.meaning_image_2);
         mThirdPhoto = v.findViewById(R.id.meaning_image_3);
 
-        mTagFirst = v.findViewById(R.id.word_tag1);
-        mTagSecond = v.findViewById(R.id.word_tag2);
-        //mTagFirst.setText(mWord.getTagFirst());
-        //mTagSecond.setText(mWord.getTagSecond());
+        // inflate tags here
+        mTagRecyclerView = v.findViewById(R.id.tag_recycler_view);
+        mTagRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+        updateUI();
 
         updatePhotoView();
 
@@ -154,5 +170,34 @@ public class WordFragment extends Fragment {
 
     }
 
+    public void updateUI() {
+
+        mWord.addTag("#fake");
+        mWord.addTag("#fake1");
+        mWord.addTag("#fake2");
+        mWord.addTag("#fake");
+        mWord.addTag("#fake1");
+        mWord.addTag("#fake2");
+        mWord.addTag("#fake");
+        mWord.addTag("#fake1");
+        mWord.addTag("#fake2");
+        mWord.addTag("#fake");
+        mWord.addTag("#fake1");
+        mWord.addTag("#fake2");
+        mWord.addTag("#fake");
+        mWord.addTag("#fake1");
+        mWord.addTag("#fake2");
+
+        List<Tag> tags = mWord.getTagList();
+
+        if (mTagAdapter == null) {
+            mTagAdapter = new HorizontalTagAdapter();
+            mTagAdapter.setTags(tags);
+            mTagRecyclerView.setAdapter(mTagAdapter);
+        } else {
+            mTagAdapter.notifyDataSetChanged();
+            mTagAdapter.setTags(tags);
+        }
+    }
 
 }
