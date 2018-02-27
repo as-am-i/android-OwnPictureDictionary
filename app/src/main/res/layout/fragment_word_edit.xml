@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="16dp">
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/word_list_preposition"/>
+            android:text="@string/word_list_preposition" />
 
         <TextView
             android:id="@+id/word_list_name"
@@ -44,9 +44,9 @@
         android:id="@+id/meaning_image_1"
         android:layout_width="320dp"
         android:layout_height="200dp"
-        android:background="@android:color/darker_gray"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:background="@android:color/darker_gray" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -73,7 +73,8 @@
         android:id="@+id/edit_tag_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tag_text_hint" />
+        android:text="@string/tag_text_hint"
+        android:textAllCaps="false"/>
 
 
 </LinearLayout>

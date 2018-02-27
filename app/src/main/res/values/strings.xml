@@ -10,11 +10,11 @@
     <string name="subtitle_format">%1$d words</string>
     <string name="word_name_hint">Word</string>
     <string name="word_text_hint">Description in text</string>
-    <string name="tag_text_hint">#tag</string>
+    <string name="tag_text_hint">#tagSample</string>
     <string name="edit_word">Edit Word</string>
     <string name="delete_word">Delete Word</string>
     <string name="message_no_word">No words in this List</string>
-    <string name="tag_edit_dialog_title">New tag</string>
+    <string name="tag_edit_dialog_title">Add a new tag</string>
 
     <plurals name="subtitle_prural">
         <item quantity="one">%1$d word</item>
