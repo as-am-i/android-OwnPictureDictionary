@@ -3,12 +3,14 @@ package com.asamitanii.android.mypicturedictionary;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -27,14 +29,17 @@ import java.util.UUID;
  */
 
 public class WordEditFragment extends Fragment {
+
+    private static final String DIALOG_TAG_EDIT = "DialogTagEdit";
+
     private Word mWord;
     private Meaning mMeaning;
     private Tag mTag;
 
     private EditText mNameField;
     private EditText mDescriptionField;
-    private EditText mTagFirst;
-    private EditText mTagSecond;
+
+    private Button mTagButton;
 
     private ImageView mFirstPhoto;
     private File mMeaningImageFirst;
@@ -111,44 +116,54 @@ public class WordEditFragment extends Fragment {
             }
         });
 
-        mTagFirst = v.findViewById(R.id.word_tag1);
-        //mTagFirst.setText(mWord.getTagFirst());
-        mTagFirst.addTextChangedListener(new TextWatcher() {
+        mTagButton = v.findViewById(R.id.edit_tag_button);
+        mTagButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-               // mWord.setTagFirst(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                TagEditFragment dialog = new TagEditFragment();
+                dialog.show(manager, DIALOG_TAG_EDIT);
             }
         });
 
-        mTagSecond = v.findViewById(R.id.word_tag2);
-        //mTagSecond.setText(mWord.getTagSecond());
-
-        mTagSecond.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-          //      mWord.setTagSecond(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+//        mTagFirst = v.findViewById(R.id.word_tag1);
+//        //mTagFirst.setText(mWord.getTagFirst());
+//        mTagFirst.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//               // mWord.setTagFirst(s.toString());
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
+//
+//        mTagSecond = v.findViewById(R.id.word_tag2);
+//        //mTagSecond.setText(mWord.getTagSecond());
+//
+//        mTagSecond.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//          //      mWord.setTagSecond(s.toString());
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
 
         mFirstPhoto = v.findViewById(R.id.meaning_image_1);
         mFirstPhoto.setOnClickListener(new View.OnClickListener(){

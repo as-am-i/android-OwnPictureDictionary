@@ -14,6 +14,7 @@
     <string name="edit_word">Edit Word</string>
     <string name="delete_word">Delete Word</string>
     <string name="message_no_word">No words in this List</string>
+    <string name="tag_edit_dialog_title">New tag</string>
 
     <plurals name="subtitle_prural">
         <item quantity="one">%1$d word</item>
