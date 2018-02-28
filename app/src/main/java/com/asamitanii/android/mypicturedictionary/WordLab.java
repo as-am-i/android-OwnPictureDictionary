@@ -88,6 +88,7 @@ public class WordLab {
         ContentValues values = getContentValues(word);
 
         mDatabase.update(WordTable.NAME, values, WordTable.Cols.UUID + " = ?", new String[] { uuidString });
+        mDatabase.update(WordTable.Cols.)
     }
 
     // to read in data from SQLite using query()

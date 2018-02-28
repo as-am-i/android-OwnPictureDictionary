@@ -122,6 +122,7 @@ public class WordEditFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager manager = getFragmentManager();
                 TagEditFragment dialog = new TagEditFragment();
+                dialog.setWord(mWord);
                 dialog.show(manager, DIALOG_TAG_EDIT);
             }
         });

@@ -172,21 +172,21 @@ public class WordFragment extends Fragment {
 
     public void updateUI() {
 
-        mWord.addTag("#fake");
-        mWord.addTag("#fake1");
-        mWord.addTag("#fake2");
-        mWord.addTag("#fake");
-        mWord.addTag("#fake1");
-        mWord.addTag("#fake2");
-        mWord.addTag("#fake");
-        mWord.addTag("#fake1");
-        mWord.addTag("#fake2");
-        mWord.addTag("#fake");
-        mWord.addTag("#fake1");
-        mWord.addTag("#fake2");
-        mWord.addTag("#fake");
-        mWord.addTag("#fake1");
-        mWord.addTag("#fake2");
+//        mWord.addTag("#fake");
+//        mWord.addTag("#fake1");
+//        mWord.addTag("#fake2");
+//        mWord.addTag("#fake");
+//        mWord.addTag("#fake1");
+//        mWord.addTag("#fake2");
+//        mWord.addTag("#fake");
+//        mWord.addTag("#fake1");
+//        mWord.addTag("#fake2");
+//        mWord.addTag("#fake");
+//        mWord.addTag("#fake1");
+//        mWord.addTag("#fake2");
+//        mWord.addTag("#fake");
+//        mWord.addTag("#fake1");
+//        mWord.addTag("#fake2");
 
         List<Tag> tags = mWord.getTagList();
 
