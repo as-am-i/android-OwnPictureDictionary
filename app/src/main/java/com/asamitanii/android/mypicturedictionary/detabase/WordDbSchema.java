@@ -12,8 +12,7 @@ public class WordDbSchema {
             public static final String UUID = "uuid";
             public static final String WORD_NAME = "word_name";
             public static final String MEANING_TEXT = "meaning_text";
-            public static final String TAG_FIRST = "tag_first";
-            public static final String TAG_SECOND = "tag_second";
+            public static final String TAG_LIST = "tag_list";
         }
     }
 }

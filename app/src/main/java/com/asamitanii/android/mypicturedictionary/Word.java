@@ -69,7 +69,7 @@ public class Word {
     public String getAllTagsString() {
         StringBuilder allTags = new StringBuilder();
         for (Tag tag : mTagList) {
-            allTags.append(tag.getTagName()).append(" ");
+            allTags.append(tag.getTagName()).append(",");
         }
         return allTags.toString();
     }

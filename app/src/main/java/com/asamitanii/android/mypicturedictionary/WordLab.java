@@ -88,7 +88,6 @@ public class WordLab {
         ContentValues values = getContentValues(word);
 
         mDatabase.update(WordTable.NAME, values, WordTable.Cols.UUID + " = ?", new String[] { uuidString });
-        mDatabase.update(WordTable.Cols.)
     }
 
     // to read in data from SQLite using query()
@@ -110,8 +109,7 @@ public class WordLab {
         values.put(WordTable.Cols.UUID, word.getId().toString());
         values.put(WordTable.Cols.WORD_NAME, word.getName());
         values.put(WordTable.Cols.MEANING_TEXT, word.getTextMeaning());
-        //values.put(WordTable.Cols.TAG_FIRST, word.getTagFirst());
-        //values.put(WordTable.Cols.TAG_SECOND, word.getTagSecond());
+        values.put(WordTable.Cols.TAG_LIST, word.getAllTagsString());
 
         return values;
     }

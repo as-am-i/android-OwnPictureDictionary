@@ -176,21 +176,21 @@ public class WordListFragment extends Fragment {
             mWordNameTextView.setText(mWord.getName());
 
             // bind tags data here
-            mWord.addTag("#fake");
-            mWord.addTag("#fake1");
-            mWord.addTag("#fake2");
-            mWord.addTag("#fake");
-            mWord.addTag("#fake1");
-            mWord.addTag("#fake2");
-            mWord.addTag("#fake");
-            mWord.addTag("#fake1");
-            mWord.addTag("#fake2");
-            mWord.addTag("#fake");
-            mWord.addTag("#fake1");
-            mWord.addTag("#fake2");
-            mWord.addTag("#fake");
-            mWord.addTag("#fake1");
-            mWord.addTag("#fake2");
+//            mWord.addTag("#fake");
+//            mWord.addTag("#fake1");
+//            mWord.addTag("#fake2");
+//            mWord.addTag("#fake");
+//            mWord.addTag("#fake1");
+//            mWord.addTag("#fake2");
+//            mWord.addTag("#fake");
+//            mWord.addTag("#fake1");
+//            mWord.addTag("#fake2");
+//            mWord.addTag("#fake");
+//            mWord.addTag("#fake1");
+//            mWord.addTag("#fake2");
+//            mWord.addTag("#fake");
+//            mWord.addTag("#fake1");
+//            mWord.addTag("#fake2");
 
             mTagAdapter.setTags(mWord.getTagList());
             mTagRecyclerView.setAdapter(mTagAdapter);

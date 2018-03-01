@@ -20,7 +20,7 @@ public class WordBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + WordTable.NAME + "(" + " _id integer primary key autoincrement, " + WordTable.Cols.UUID + ", " + WordTable.Cols.WORD_NAME + ", " + WordTable.Cols.MEANING_TEXT + ", " + WordTable.Cols.TAG_FIRST + ", " + WordTable.Cols.TAG_SECOND + ")");
+        db.execSQL("create table " + WordTable.NAME + "(" + " _id integer primary key autoincrement, " + WordTable.Cols.UUID + ", " + WordTable.Cols.WORD_NAME + ", " + WordTable.Cols.MEANING_TEXT + ", " + WordTable.Cols.TAG_LIST + ")");
     }
 
     @Override
