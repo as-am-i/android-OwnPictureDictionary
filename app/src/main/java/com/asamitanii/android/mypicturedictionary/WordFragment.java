@@ -54,14 +54,28 @@ public class WordFragment extends Fragment {
     private ImageView mThirdPhoto;
     private File mMeaningImageThird;
 
-
+    private View v;
+    UUID wordId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
 
-        UUID wordId = (UUID) getArguments().getSerializable(ARG_WORD_ID);
+         wordId = (UUID) getArguments().getSerializable(ARG_WORD_ID);
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        //WordLab.get(getActivity()).updateWord(mWord);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
         mWord = WordLab.get(getActivity()).getWord(wordId);
 
@@ -70,27 +84,6 @@ public class WordFragment extends Fragment {
         mMeaningImageThird = WordLab.get(getActivity()).getPhotoFile(mWord, 3);
 
         mList = mWord.getTagList();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
-        WordLab.get(getActivity()).updateWord(mWord);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        updateUI();
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_word, container, false);
-
-//        mListName = v.findViewById(R.id.word_list_name);
-//        mListName.setText(mList.getListName());
 
         mWordName = v.findViewById(R.id.word_name);
         mWordName.setText(mWord.getName());
@@ -109,6 +102,14 @@ public class WordFragment extends Fragment {
         updateUI();
 
         updatePhotoView();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        v = inflater.inflate(R.layout.fragment_word, container, false);
+
+//        mListName = v.findViewById(R.id.word_list_name);
+//        mListName.setText(mList.getListName());
 
         return v;
     }
@@ -191,7 +192,7 @@ public class WordFragment extends Fragment {
         List<Tag> tags = mWord.getTagList();
 
         if (mTagAdapter == null) {
-            mTagAdapter = new HorizontalTagAdapter();
+            mTagAdapter = new HorizontalTagAdapter(mWord);
             mTagAdapter.setTags(tags);
             mTagRecyclerView.setAdapter(mTagAdapter);
         } else {

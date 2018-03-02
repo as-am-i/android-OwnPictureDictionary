@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -24,6 +26,8 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
+import java.util.List;
+
 /**
  * Created by tanii_asami on 2/6/18.
  */
@@ -32,9 +36,14 @@ public class WordEditFragment extends Fragment {
 
     private static final String DIALOG_TAG_EDIT = "DialogTagEdit";
 
+    // tags
+    private RecyclerView mTagRecyclerView;
+    private HorizontalTagAdapter mTagAdapter;
+
     private Word mWord;
     private Meaning mMeaning;
     private Tag mTag;
+    private List mList;
 
     private EditText mNameField;
     private EditText mDescriptionField;
@@ -60,13 +69,20 @@ public class WordEditFragment extends Fragment {
         mMeaningImageFirst = WordLab.get(getActivity()).getPhotoFile(mWord, 1);
         mMeaningImageSecond = WordLab.get(getActivity()).getPhotoFile(mWord,2);
         mMeaningImageThird = WordLab.get(getActivity()).getPhotoFile(mWord, 3);
+
+        mList = mWord.getTagList();
     }
 
     @Override
     public void onPause() {
-        super.onPause();
-
         WordLab.get(getActivity()).updateWord(mWord);
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
     }
 
     @Override
@@ -126,45 +142,6 @@ public class WordEditFragment extends Fragment {
                 dialog.show(manager, DIALOG_TAG_EDIT);
             }
         });
-
-//        mTagFirst = v.findViewById(R.id.word_tag1);
-//        //mTagFirst.setText(mWord.getTagFirst());
-//        mTagFirst.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//               // mWord.setTagFirst(s.toString());
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
-//
-//        mTagSecond = v.findViewById(R.id.word_tag2);
-//        //mTagSecond.setText(mWord.getTagSecond());
-//
-//        mTagSecond.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//          //      mWord.setTagSecond(s.toString());
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
 
         mFirstPhoto = v.findViewById(R.id.meaning_image_1);
         mFirstPhoto.setOnClickListener(new View.OnClickListener(){
@@ -245,10 +222,13 @@ public class WordEditFragment extends Fragment {
         });
 
 
+        // inflate tags here
+        mTagRecyclerView = v.findViewById(R.id.tag_recycler_view);
+        mTagRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+        updateUI();
+
         updatePhotoView();
-
-
-
 
         return v;
 
@@ -277,5 +257,19 @@ public class WordEditFragment extends Fragment {
             mThirdPhoto.setImageBitmap(bitmap);
         }
 
+    }
+
+    public void updateUI() {
+
+        List<Tag> tags = mWord.getTagList();
+
+        if (mTagAdapter == null) {
+            mTagAdapter = new HorizontalTagAdapter(mWord);
+            mTagAdapter.setTags(tags);
+            mTagRecyclerView.setAdapter(mTagAdapter);
+        } else {
+            mTagAdapter.notifyDataSetChanged();
+            mTagAdapter.setTags(tags);
+        }
     }
 }

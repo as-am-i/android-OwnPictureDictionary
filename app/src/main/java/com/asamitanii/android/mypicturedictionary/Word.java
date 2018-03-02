@@ -66,6 +66,10 @@ public class Word {
         mTagList.add(tag);
     }
 
+    public void deleteTag(int tag) {
+        mTagList.remove(tag);
+    }
+
     public String getAllTagsString() {
         StringBuilder allTags = new StringBuilder();
         for (Tag tag : mTagList) {

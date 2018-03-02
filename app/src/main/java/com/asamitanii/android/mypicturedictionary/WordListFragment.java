@@ -167,7 +167,7 @@ public class WordListFragment extends Fragment {
             mTagRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
             // create a new tagAdapter and set it to TagRecyclerView
-            mTagAdapter = new HorizontalTagAdapter();
+            mTagAdapter = new HorizontalTagAdapter(mWord);
         }
 
         // bind inside WordHolder

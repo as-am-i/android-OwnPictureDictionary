@@ -69,21 +69,31 @@
             android:background="@android:color/darker_gray" />
     </LinearLayout>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp" >
-
-    <Button
-        android:id="@+id/edit_tag_button"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tag_text_hint"
-        android:textAllCaps="false"
-        android:background="@android:color/transparent"
-        />
-    </RelativeLayout>
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/tag_recycler_view"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" />
+
+        <Button
+            android:id="@+id/edit_tag_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/tag_text_hint"
+            android:textAllCaps="false" />
+
+
+    </LinearLayout>
 
 
 </LinearLayout>
