@@ -31,4 +31,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:recyclerview-v7:27.0.2'
     compile 'com.github.jrvansuita:PickImage:+'
+
+    compile 'com.parse:parse-android:1.16.6' //update version to the latest one
+}
+
+repositories {
+    mavenCentral()
 }

@@ -2,6 +2,9 @@ package com.asamitanii.android.mypicturedictionary;
 
 import android.support.v4.content.FileProvider;
 
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -11,7 +14,8 @@ import java.util.List;
  * Created by tanii_asami on 1/31/18.
  */
 
-public class Word {
+@ParseClassName("Word")
+public class Word extends ParseObject {
 
     private UUID mId;
     private String mName;

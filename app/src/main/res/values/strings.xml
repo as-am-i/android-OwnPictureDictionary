@@ -1,4 +1,10 @@
 <resources>
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Change the following strings as required -->
+    <string name="back4app_app_id">NcEyhkcrNpeMjeBf6nbPxInjsGcZuRo9tC6vZ9Ul</string>
+    <string name="back4app_client_key">1kMYtXERXMThYQGCTSY4CmtzYcKyJGC6CCpIv0vY</string>
+
     <string name="app_name">MyPictureDictionary</string>
     <string name="word_list_preposition">In</string>
     <string name="word_list_name">Default_List</string>

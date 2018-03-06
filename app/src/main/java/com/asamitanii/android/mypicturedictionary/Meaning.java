@@ -1,12 +1,16 @@
 package com.asamitanii.android.mypicturedictionary;
 
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
+
 import java.util.UUID;
 
 /**
  * Created by tanii_asami on 2/1/18.
  */
 
-public class Meaning {
+@ParseClassName("Meaning")
+public class Meaning extends ParseObject {
     private UUID mId;
     private String mDescription;
     private Word mWordId;

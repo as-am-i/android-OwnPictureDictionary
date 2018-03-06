@@ -1,12 +1,16 @@
 package com.asamitanii.android.mypicturedictionary;
 
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
+
 import java.util.UUID;
 
 /**
  * Created by tanii_asami on 2/1/18.
  */
 
-public class List {
+@ParseClassName("List")
+public class List extends ParseObject {
     private UUID mId;
     private String mListName;
     private User mOwnerId;
