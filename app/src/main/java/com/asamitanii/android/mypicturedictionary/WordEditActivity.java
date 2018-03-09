@@ -26,8 +26,8 @@ public class WordEditActivity extends SingleFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        UUID wordId = (UUID) getIntent().getSerializableExtra(WordEditActivity.EXTRA_WORD_ID);
-//        mWord = WordLab.get(this).getWord(wordId);
+        String wordId = (String) getIntent().getSerializableExtra(EXTRA_WORD_ID);
+        mWord = WordLab.get(this).getWord(wordId);
         setTitle(mWord.getName());
     }
 

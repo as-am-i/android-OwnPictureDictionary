@@ -63,8 +63,8 @@ public class WordEditFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        UUID wordId = (UUID) getActivity().getIntent().getSerializableExtra(WordEditActivity.EXTRA_WORD_ID);
-//        mWord = WordLab.get(getActivity()).getWord(wordId);
+        String wordId = (String) getActivity().getIntent().getSerializableExtra(WordEditActivity.EXTRA_WORD_ID);
+        mWord = WordLab.get(getActivity()).getWord(wordId);
         // now I have a file here
         mMeaningImageFirst = WordLab.get(getActivity()).getPhotoFile(mWord, 1);
         mMeaningImageSecond = WordLab.get(getActivity()).getPhotoFile(mWord,2);
