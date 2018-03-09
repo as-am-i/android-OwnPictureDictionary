@@ -17,8 +17,8 @@ import java.util.List;
 @ParseClassName("Word")
 public class Word extends ParseObject {
 
-    private UUID mId;
-    private String mName;
+    public static final String ID = "objectId";
+    public static final String NAME = "name";
 
     private List<Tag> mTagList;
 
@@ -27,33 +27,37 @@ public class Word extends ParseObject {
     //private List<Meaning> mMeaningList;
 
     public Word() {
-        this(UUID.randomUUID());
-        setName("New");
+
 
 //        mTagList = new ArrayList<>();
         //mTagList.add(new Tag());
 
       //  mMeaningList = new ArrayList<>();
 
-    }
+//    }
 
-    public Word(UUID id) {
-        mId = id;
-        setName("New");
-
+//    public Word(UUID id) {
+//        mId = id;
+//        setName("New");
+//
         mTagList = new ArrayList<>();
     }
 
-    public UUID getId() {
-        return mId;
+    public String getId() {
+        return getObjectId();
     }
 
     public String getName() {
-        return mName;
+        String name = getString(NAME);
+        if (name != null) {
+            return name;
+        } else {
+            return "New";
+        }
     }
 
     public void setName(String name) {
-        mName = name;
+        put(NAME, name);
     }
 
     public List<Tag> getTagList() {

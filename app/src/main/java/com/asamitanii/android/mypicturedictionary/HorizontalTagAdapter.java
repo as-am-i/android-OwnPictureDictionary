@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public class HorizontalTagAdapter extends RecyclerView.Adapter<HorizontalTagAdap
 
     public HorizontalTagAdapter(Word word) {
         mWord = word;
+        mTags = new ArrayList<>();
     }
 
 

@@ -21,6 +21,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_fragment);
 
         ParseObject.registerSubclass(User.class);
         ParseObject.registerSubclass(Word.class);
@@ -33,8 +34,6 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
 
         // save the current installation to Back4App
         ParseInstallation.getCurrentInstallation().saveInBackground();
-
-        setContentView(R.layout.activity_fragment);
 
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);

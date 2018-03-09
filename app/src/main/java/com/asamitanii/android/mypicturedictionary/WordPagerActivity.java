@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.parse.ParseObject;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -21,9 +23,9 @@ public class WordPagerActivity extends AppCompatActivity {
     private static final String EXTRA_WORD_ID = "com.asamitanii.android.mypicturedictionary.word_id";
 
     private ViewPager mViewPager;
-    private List<Word> mWords;
+    private List<ParseObject> mWords;
 
-    public static Intent newIntent(Context packageContext, UUID wordId) {
+    public static Intent newIntent(Context packageContext, String wordId) {
         Intent intent = new Intent(packageContext, WordPagerActivity.class);
         intent.putExtra(EXTRA_WORD_ID, wordId);
         return intent;
@@ -34,16 +36,17 @@ public class WordPagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_pager);
 
-        UUID wordId = (UUID) getIntent().getSerializableExtra(EXTRA_WORD_ID);
+        String wordId = (String) getIntent().getSerializableExtra(EXTRA_WORD_ID);
 
         mViewPager = findViewById(R.id.word_view_pager);
 
-        mWords = WordLab.get(this).getWords();
+        mWords = WordLab.get(this).getWordList();
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int position) {
-                Word word = mWords.get(position);
+                Word word = (Word) mWords.get(position);
 
                 // to show the label on Toolbar
                 setTitle(word.getName());
@@ -59,7 +62,7 @@ public class WordPagerActivity extends AppCompatActivity {
 
         // to show the specific word being selected by the user
         for (int i = 0; i < mWords.size(); i++) {
-            if (mWords.get(i).getId().equals(wordId)) {
+            if (mWords.get(i).getObjectId().equals(wordId)) {
                 mViewPager.setCurrentItem(i);
                 break;
             }

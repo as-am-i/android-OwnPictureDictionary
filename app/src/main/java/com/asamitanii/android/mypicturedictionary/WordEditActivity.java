@@ -27,11 +27,11 @@ public class WordEditActivity extends SingleFragmentActivity {
         super.onCreate(savedInstanceState);
 
         UUID wordId = (UUID) getIntent().getSerializableExtra(WordEditActivity.EXTRA_WORD_ID);
-        mWord = WordLab.get(this).getWord(wordId);
+//        mWord = WordLab.get(this).getWord(wordId);
         setTitle(mWord.getName());
     }
 
-    public static Intent newIntent(Context packageContext, UUID wordId) {
+    public static Intent newIntent(Context packageContext, String wordId) {
         Intent intent = new Intent(packageContext, WordEditActivity.class);
         intent.putExtra(EXTRA_WORD_ID, wordId);
         return intent;

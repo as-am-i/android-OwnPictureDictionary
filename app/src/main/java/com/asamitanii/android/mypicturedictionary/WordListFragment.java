@@ -17,6 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.parse.ParseObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,12 +34,16 @@ public class WordListFragment extends Fragment {
     private WordAdapter mAdapter;
     private boolean mSubtitleVisible;
 
+    private List<ParseObject> words;
+
     private TextView mMessageNoWords;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        words = new ArrayList<>();
         setHasOptionsMenu(true);
+        loadDataFromParse();
     }
 
     @Override
@@ -61,6 +67,7 @@ public class WordListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        loadDataFromParse();
         updateUI();
     }
 
@@ -84,6 +91,9 @@ public class WordListFragment extends Fragment {
                 Word word = new Word();
                 WordLab.get(getActivity()).addWord(word);
 
+                loadDataFromParse();
+                updateUI();
+
                 // to start an instance of WordEditActivity to edit the new Word
                 Intent intent = WordEditActivity.newIntent(getActivity(), word.getId());
                 startActivity(intent);
@@ -106,9 +116,19 @@ public class WordListFragment extends Fragment {
         outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisible);
     }
 
-    private void updateUI() {
+    private void loadDataFromParse() {
         WordLab wordLab = WordLab.get(getActivity());
-        List<Word> words = wordLab.getWords();
+        wordLab.loadWords(this);
+        words = WordLab.get(getActivity()).getWordList();
+    }
+
+    public void updateData() {
+        mAdapter.notifyDataSetChanged();
+    }
+
+    private void updateUI() {
+//        WordLab wordLab = WordLab.get(getActivity());
+//        List<Word> words = wordLab.getWords();
 
         if (mAdapter == null) {
             mAdapter = new WordAdapter(words);
@@ -118,18 +138,19 @@ public class WordListFragment extends Fragment {
             mAdapter.setWords(words);
         }
 
-        if (words.size() > 0) {
-            mMessageNoWords.setVisibility(View.GONE);
-        } else {
-            mMessageNoWords.setVisibility(View.VISIBLE);
-        }
+//        words = WordLab.get(getActivity()).getWordList();
+//        if (words.size() > 0) {
+//            mMessageNoWords.setVisibility(View.GONE);
+//        } else {
+//            mMessageNoWords.setVisibility(View.VISIBLE);
+//        }
 
         updateSubtitle();
     }
 
     private void updateSubtitle() {
         WordLab wordLab = WordLab.get(getActivity());
-        int wordSize = wordLab.getWords().size();
+        int wordSize = words.size();
         String subtitle = getResources().getQuantityString(R.plurals.subtitle_prural, wordSize, wordSize);
 
         if (!mSubtitleVisible) {
@@ -175,29 +196,8 @@ public class WordListFragment extends Fragment {
             mWord = word;
             mWordNameTextView.setText(mWord.getName());
 
-            // bind tags data here
-//            mWord.addTag("#fake");
-//            mWord.addTag("#fake1");
-//            mWord.addTag("#fake2");
-//            mWord.addTag("#fake");
-//            mWord.addTag("#fake1");
-//            mWord.addTag("#fake2");
-//            mWord.addTag("#fake");
-//            mWord.addTag("#fake1");
-//            mWord.addTag("#fake2");
-//            mWord.addTag("#fake");
-//            mWord.addTag("#fake1");
-//            mWord.addTag("#fake2");
-//            mWord.addTag("#fake");
-//            mWord.addTag("#fake1");
-//            mWord.addTag("#fake2");
-
             mTagAdapter.setTags(mWord.getTagList());
             mTagRecyclerView.setAdapter(mTagAdapter);
-
-
-//            mTagFirstTextView.setText(mWord.getTagFirst());
-//            mTagSecondTextView.setText(mWord.getTagSecond());
         }
 
         @Override
@@ -214,9 +214,9 @@ public class WordListFragment extends Fragment {
      */
     private class WordAdapter extends RecyclerView.Adapter<WordHolder> {
 
-        private List<Word> mWords;
+        private List<ParseObject> mWords;
 
-        public WordAdapter(List<Word> words) {
+        public WordAdapter(List<ParseObject> words) {
             mWords = words;
         }
 
@@ -230,7 +230,7 @@ public class WordListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(WordHolder holder, int position) {
-            Word word = mWords.get(position);
+            Word word = (Word )mWords.get(position);
             holder.bind(word);
         }
 
@@ -240,7 +240,7 @@ public class WordListFragment extends Fragment {
         }
 
         // to used in updateUI() for refreshing model data with database
-        public void setWords(List<Word> words) {
+        public void setWords(List<ParseObject> words) {
             mWords = words;
         }
     }

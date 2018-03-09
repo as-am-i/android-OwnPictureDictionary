@@ -55,15 +55,13 @@ public class WordFragment extends Fragment {
     private File mMeaningImageThird;
 
     private View v;
-    UUID wordId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
 
-         wordId = (UUID) getArguments().getSerializable(ARG_WORD_ID);
-
+        String wordId = (String) getArguments().getSerializable(ARG_WORD_ID);
     }
 
     @Override
@@ -77,6 +75,7 @@ public class WordFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
+        String wordId = (String) getArguments().getSerializable(ARG_WORD_ID);
         mWord = WordLab.get(getActivity()).getWord(wordId);
 
         mMeaningImageFirst = WordLab.get(getActivity()).getPhotoFile(mWord, 1);
@@ -137,7 +136,7 @@ public class WordFragment extends Fragment {
         }
     }
 
-    public static WordFragment newInstance(UUID wordId) {
+    public static WordFragment newInstance(String wordId) {
 
         Bundle args = new Bundle();
         args.putSerializable(ARG_WORD_ID, wordId);
@@ -172,23 +171,6 @@ public class WordFragment extends Fragment {
     }
 
     public void updateUI() {
-
-//        mWord.addTag("#fake");
-//        mWord.addTag("#fake1");
-//        mWord.addTag("#fake2");
-//        mWord.addTag("#fake");
-//        mWord.addTag("#fake1");
-//        mWord.addTag("#fake2");
-//        mWord.addTag("#fake");
-//        mWord.addTag("#fake1");
-//        mWord.addTag("#fake2");
-//        mWord.addTag("#fake");
-//        mWord.addTag("#fake1");
-//        mWord.addTag("#fake2");
-//        mWord.addTag("#fake");
-//        mWord.addTag("#fake1");
-//        mWord.addTag("#fake2");
-
         List<Tag> tags = mWord.getTagList();
 
         if (mTagAdapter == null) {
