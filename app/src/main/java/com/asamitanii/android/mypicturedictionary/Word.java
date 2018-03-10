@@ -19,6 +19,7 @@ public class Word extends ParseObject {
 
     public static final String ID = "objectId";
     public static final String NAME = "name";
+    public static final String MEANING_TEXT = "meaning_text";;
 
     private List<Tag> mTagList;
 
@@ -28,18 +29,6 @@ public class Word extends ParseObject {
 
     public Word() {
 
-
-//        mTagList = new ArrayList<>();
-        //mTagList.add(new Tag());
-
-      //  mMeaningList = new ArrayList<>();
-
-//    }
-
-//    public Word(UUID id) {
-//        mId = id;
-//        setName("New");
-//
         mTagList = new ArrayList<>();
     }
 
@@ -52,7 +41,7 @@ public class Word extends ParseObject {
         if (name != null) {
             return name;
         } else {
-            return "New";
+            return "No name";
         }
     }
 
@@ -86,16 +75,13 @@ public class Word extends ParseObject {
         return allTags.toString();
     }
 
-    public String getTextMeaning() {
-        return mTextMeaning;
+    public String getMeaningText() {
+        return getString(MEANING_TEXT);
     }
 
-    public void setTextMeaning(String textMeaning) {
-        mTextMeaning = textMeaning;
+    public void setMeaningText(String text) {
+        put(MEANING_TEXT, text);
     }
-
-
-
 
     public String getPhotoFilename(int number) {
         return "IMG_" + getId().toString() + "_" + number + ".jpg";

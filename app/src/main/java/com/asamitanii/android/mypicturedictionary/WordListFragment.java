@@ -89,6 +89,7 @@ public class WordListFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.new_word:
                 Word word = new Word();
+                word.setName("New");
                 WordLab.get(getActivity()).addWord(word);
 
                 loadDataFromParse();

@@ -88,7 +88,7 @@ public class WordFragment extends Fragment {
         mWordName.setText(mWord.getName());
 
         mWordDescription = v.findViewById(R.id.word_description);
-        mWordDescription.setText(mWord.getTextMeaning());
+        mWordDescription.setText(mWord.getMeaningText());
 
         mFirstPhoto = v.findViewById(R.id.meaning_image_1);
         mSecondPhoto = v.findViewById(R.id.meaning_image_2);

@@ -113,7 +113,7 @@ public class WordEditFragment extends Fragment {
         mDescriptionField = v.findViewById(R.id.word_description);
 
         // in the EditField, get an instance of Meaning Model and get String from ihe instance
-        mDescriptionField.setText(mWord.getTextMeaning());
+        mDescriptionField.setText(mWord.getMeaningText());
 
         mDescriptionField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -123,7 +123,7 @@ public class WordEditFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mWord.setTextMeaning(s.toString());
+                mWord.setMeaningText(s.toString());
             }
 
             @Override
