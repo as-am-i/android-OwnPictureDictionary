@@ -38,7 +38,6 @@ public class HorizontalTagAdapter extends RecyclerView.Adapter<HorizontalTagAdap
 
     @Override
     public void onBindViewHolder(TagHolder holder, int position) {
-
         holder.bind(mTags.get(position), position);
     }
 

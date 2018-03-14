@@ -105,7 +105,7 @@ public class WordFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_word, container, false);
+         v = inflater.inflate(R.layout.fragment_word, container, false);
 
 //        mListName = v.findViewById(R.id.word_list_name);
 //        mListName.setText(mList.getListName());

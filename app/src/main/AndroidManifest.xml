@@ -34,7 +34,7 @@
             android:parentActivityName=".WordListActivity"></activity>
         <activity
             android:name=".WordEditActivity"
-            android:parentActivityName=".WordPagerActivity"></activity>
+            android:parentActivityName=".WordListActivity"></activity>
 
         <meta-data
             android:name="com.parse.SERVER_URL"

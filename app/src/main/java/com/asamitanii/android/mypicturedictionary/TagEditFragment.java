@@ -67,11 +67,17 @@ public class TagEditFragment extends DialogFragment {
             public void onClick(DialogInterface dialog, int id) {
                 // add a new tag here...
                 mWord.addTag(mTempTag);
-
             }
         }).setNegativeButton(R.string.cancel, null);
 
         return builder.create();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        mWord.saveAll();
     }
 
     public void setWord(Word word) {
