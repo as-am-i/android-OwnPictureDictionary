@@ -82,8 +82,6 @@ public class HorizontalTagAdapter extends RecyclerView.Adapter<HorizontalTagAdap
 
                 // update UI
                 notifyItemRemoved(position);
-                //notifyDataSetChanged();
-                //setTags(mTags);
             }
         }
     }

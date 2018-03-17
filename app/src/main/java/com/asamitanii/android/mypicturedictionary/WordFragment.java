@@ -2,7 +2,6 @@ package com.asamitanii.android.mypicturedictionary;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,9 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.UUID;
-
 import java.util.List;
 
 /**
@@ -68,7 +64,6 @@ public class WordFragment extends Fragment {
     public void onPause() {
         super.onPause();
 
-        //WordLab.get(getActivity()).updateWord(mWord);
     }
 
     @Override
@@ -106,9 +101,6 @@ public class WordFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
          v = inflater.inflate(R.layout.fragment_word, container, false);
-
-//        mListName = v.findViewById(R.id.word_list_name);
-//        mListName.setText(mList.getListName());
 
         return v;
     }

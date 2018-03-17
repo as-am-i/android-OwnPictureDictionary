@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import com.parse.ParseObject;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by tanii_asami on 2/5/18.

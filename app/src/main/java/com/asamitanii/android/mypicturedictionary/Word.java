@@ -1,16 +1,10 @@
 package com.asamitanii.android.mypicturedictionary;
 
-import android.support.v4.content.FileProvider;
-
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.UUID;
 import java.util.List;
-
-import bolts.Task;
 
 /**
  * Created by tanii_asami on 1/31/18.
@@ -64,7 +58,6 @@ public class Word extends ParseObject {
             String[] strings = getString(TAG_LIST).split(",");
             for (String string : strings) {
                 Tag tag = new Tag();
-//                tag.setObjectId(string);
                 tag.setTagName(string);
                 mTagList.add(tag);
             }
@@ -74,7 +67,6 @@ public class Word extends ParseObject {
     public void addTag(String tagName) {
         Tag tag = new Tag();
         tag.setTagName(tagName);
-//        tag.setObjectId(tagName);
         mTagList.add(tag);
 
         // store in parse

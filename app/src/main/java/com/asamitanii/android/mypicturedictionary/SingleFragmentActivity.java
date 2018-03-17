@@ -25,7 +25,6 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
 
         ParseObject.registerSubclass(User.class);
         ParseObject.registerSubclass(Word.class);
-//        ParseObject.registerSubclass(Tag.class);
         ParseObject.registerSubclass(List.class);
         ParseObject.registerSubclass(Meaning.class);
 

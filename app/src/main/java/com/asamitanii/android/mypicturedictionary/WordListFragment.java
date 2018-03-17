@@ -36,7 +36,7 @@ public class WordListFragment extends Fragment {
 
     private List<ParseObject> words;
 
-//    private TextView mMessageNoWords;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,8 +52,6 @@ public class WordListFragment extends Fragment {
 
         mWordRecyclerView = view.findViewById(R.id.word_recycler_view);
         mWordRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-//        mMessageNoWords = view.findViewById(R.id.message_no_word);
 
         if (savedInstanceState != null) {
             mSubtitleVisible = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
@@ -128,9 +126,6 @@ public class WordListFragment extends Fragment {
     }
 
     private void updateUI() {
-//        WordLab wordLab = WordLab.get(getActivity());
-//        List<Word> words = wordLab.getWords();
-
         if (mAdapter == null) {
             mAdapter = new WordAdapter(words);
             mWordRecyclerView.setAdapter(mAdapter);
@@ -138,13 +133,6 @@ public class WordListFragment extends Fragment {
             mAdapter.notifyDataSetChanged();
             mAdapter.setWords(words);
         }
-
-//        if (words.size() > 0) {
-//            mMessageNoWords.setVisibility(View.GONE);
-//        } else {
-//            mMessageNoWords.setVisibility(View.VISIBLE);
-//        }
-
         updateSubtitle();
     }
 

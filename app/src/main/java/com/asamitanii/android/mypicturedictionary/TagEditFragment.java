@@ -11,8 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-import java.util.UUID;
-
 /**
  * Created by tanii_asami on 2/26/18.
  */

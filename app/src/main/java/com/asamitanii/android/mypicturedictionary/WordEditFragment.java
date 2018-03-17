@@ -24,8 +24,6 @@ import com.vansuita.pickimage.listeners.IPickResult;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.util.UUID;
-
 import java.util.List;
 
 /**

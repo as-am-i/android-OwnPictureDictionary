@@ -3,12 +3,9 @@ package com.asamitanii.android.mypicturedictionary;
 import android.util.Log;
 
 import com.parse.FindCallback;
-import com.parse.ParseClassName;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-
-import java.util.UUID;
 
 /**
  * Created by tanii_asami on 2/1/18.
